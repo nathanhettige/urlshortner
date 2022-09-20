@@ -11,7 +11,7 @@ function App() {
         <label className="input-group">
           <input
             type="text"
-            placeholder="http://google.com"
+            placeholder="https://github.com/nathanhettige"
             className="input input-bordered"
           />
           <button className="btn">Shorten!</button>
