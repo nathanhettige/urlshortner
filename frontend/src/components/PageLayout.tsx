@@ -4,9 +4,9 @@ import Header from './Header';
 const PageLayout = (props: { children?: React.ReactNode }) => {
   const { children } = props;
   return (
-    <div className="grid grid-rows-[auto,1fr,auto] h-screen">
+    <div className="grid grid-rows-[auto,1fr,auto] h-screen gap-40">
       <Header />
-      {children ?? <div></div>}
+      <div>{children}</div>
       <Footer />
     </div>
   );
