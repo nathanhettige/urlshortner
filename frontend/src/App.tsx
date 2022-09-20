@@ -4,17 +4,17 @@ import PageLayout from './components/PageLayout';
 function App() {
   const Form = () => {
     return (
-      <div className="form-control">
+      <div className="form-control w-3/5">
         <label className="label">
           <span className="label-text">Enter url</span>
         </label>
-        <label className="input-group">
+        <label className="input-group input-group-md">
           <input
             type="text"
             placeholder="https://github.com/nathanhettige"
-            className="input input-bordered"
+            className="input input-md input-bordered w-full"
           />
-          <button className="btn">Shorten!</button>
+          <button className="btn btn-md">Shorten!</button>
         </label>
       </div>
     );
