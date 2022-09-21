@@ -4,6 +4,7 @@ using UrlShortener.Database;
 using UrlShortener.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var policyName = "_myAllowSpecificOrigins";
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -13,6 +14,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextFactory<UrlShortenerDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("Database"));
+});
+builder.Services.AddCors(options => {
+    options.AddPolicy(name: policyName,
+    builder => {
+        builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
 });
 builder.Services.TryAddScoped<UrlShorteningService>();
 
@@ -26,6 +36,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(policyName);
 
 app.UseAuthorization();
 

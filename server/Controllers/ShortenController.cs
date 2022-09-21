@@ -7,7 +7,7 @@ public record SetDto(string ShortId, string Url);
 public record GenerateDto(string Url);
 
 [ApiController]
-[Route("u")]
+[Route("/")]
 public class ShortenController : ControllerBase
 {
 	private readonly UrlShorteningService _shorteningService;
@@ -31,6 +31,7 @@ public class ShortenController : ControllerBase
 	}
 
 	[HttpPost("set")]
+	[HttpPost("update")]
 	public async Task<IActionResult> SetOrUpdateUrl([FromBody] SetDto model)
 	{
 		await _shorteningService.SetOrUpdateUrl(model.ShortId, model.Url);
